@@ -22,7 +22,6 @@ public class BoardTest {
 		
 		Users params = Users.builder()
 				.userId("guest5")
-				.userName("손님5")
 				.userPassword("1234")
 				.build();
 		
@@ -30,7 +29,6 @@ public class BoardTest {
 		
 		Users entity = boardRepository.findById((long) 6).get();
         assertThat(entity.getUserId()).isEqualTo("guest5");
-        assertThat(entity.getUserName()).isEqualTo("손님4");
         assertThat(entity.getUserPassword()).isEqualTo("1234");
 		
 	}

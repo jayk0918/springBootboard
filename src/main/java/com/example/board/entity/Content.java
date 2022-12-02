@@ -1,5 +1,6 @@
 package com.example.board.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,34 +14,41 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name = "content")
-@Table(name = "board.contents")
+@Table(name = "board_contents")
 public class Content {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(nullable = false, unique = true)
+	private int contentNo;
 	
 	// 게시글 리스트
 	private String title;
 	private String content;
 	private int userNo;
-	private String userName;
-	private int contentNo;
-	private String date;
+	//private String userName;
+	private String regdate;
 	private int hit;
 	
+	// 게시글 조회 builder
+	@Builder
+	public Content(String title, String content, String regdate, int hit) {
+		this.title = title;
+		this.content = content;
+		this.regdate = regdate;
+		this.hit = hit;
+	}
 	
 	// 게시글 등록 builder
 	@Builder
-	public Content(String title, String content, int userNo, String userName, int contentNo, String date,
-			int hit) {
+	public Content(String title, String content, int userNo, int hit) {
 		this.title = title;
 		this.content = content;
 		this.userNo = userNo;
-		this.userName = userName;
-		this.contentNo = contentNo;
-		this.date = date;
-		this.hit = hit;
+		this.hit = 1;
 	}
+
+
+	
 	
 }

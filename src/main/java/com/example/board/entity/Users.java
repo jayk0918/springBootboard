@@ -1,11 +1,5 @@
 package com.example.board.entity;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,14 +10,15 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name = "users")
-@Table(name = "board.users")
-public class Users implements UserDetails {
+@Table(name = "board_users")
+public class Users {
 	
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,14 +26,22 @@ public class Users implements UserDetails {
 	private int userNo;
 	
 	private String userId;
+	private String userName;
 	private String userPassword;
 	
 	@Builder
-	public Users(int userNo, String userId, String userPassword) {
+	public Users(int userNo, String userName) {
+		this.userNo = userNo;
+		this.userName = userName;
+	}
+	
+	@Builder
+	public Users(String userId, String userPassword) {
 		this.userId = userId;
 		this.userPassword = userPassword;
 	}
-
+	
+	/*
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection <GrantedAuthority> collectors = new ArrayList<>();
@@ -77,7 +80,7 @@ public class Users implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
+	*/
 	
 	
 }

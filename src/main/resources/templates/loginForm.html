@@ -24,10 +24,13 @@
 	      		</div>
 	      		<div id = "passwordInput">
 	      			<label for = "password">패스워드</label>
-	      			<input id = "password" type="password" name="password">
+	      			<input id = "userPassword" type="password" name="userPassword">
       			</div>
 	      		<div id="btnArea">
 					<button id = "btn-login" class="btn btn-primary" type="submit">로그인</button>
+					
+					<a href = "/registerForm">회원가입</a>
+					
 				</div>
 			</div>
 		</div>
@@ -38,21 +41,20 @@
 
 $("#btn-login").on("click", function(){
 	var userId = $("#userId").val();
-	var password = $("#password").val();
+	var userPassword = $("#userPassword").val();
 	var userInfo={
 		userId : userId,
-		userPassword : password
+		userPassword : userPassword
 	};
 	
 	$.ajax({
-		url : "/loginCheck",
+		url : "/userCheck",
 		type : "post",
 		data : JSON.stringify(userInfo),
 		contentType : "application/json",
 		dataType : "json",
-		success : function(result){
-			alert("로그인 성공");
-			window.location.href = "/list.html"
+		success : function(){
+			window.location.href = "/list";
 		},
 		error : function(XHR, status, error) {
 			alert("다시 입력해주세요");
