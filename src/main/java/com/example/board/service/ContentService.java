@@ -15,8 +15,20 @@ public class ContentService {
 	private ContentRepository contentRepository;
 	
 	public List<Content> getList(){
-		List<Content> result = contentRepository.findAll();
-		return result;
+		return contentRepository.findAllByOrderByContentNoDesc();
 	}
-
+	
+	public Content getContent(int contentNo) {
+		return contentRepository.findByContentNo(contentNo);
+	}
+	
+	public Content write(Content content) {
+		return contentRepository.save(content);
+	}
+	
+	public void deleteContent(int contentNo) {
+		contentRepository.deleteByContentNo(contentNo);
+	}
+	
+	
 }

@@ -24,7 +24,7 @@ public class Content {
 	
 	// 게시글 리스트
 	private String title;
-	private String content;
+	private String contents;
 	private int userNo;
 	//private String userName;
 	private String regdate;
@@ -32,23 +32,21 @@ public class Content {
 	
 	// 게시글 조회 builder
 	@Builder
-	public Content(String title, String content, String regdate, int hit) {
+	public Content(String title, String contents, String regdate, int hit) {
 		this.title = title;
-		this.content = content;
-		this.regdate = regdate;
+		this.contents = contents;
+		this.regdate =  regdate;
 		this.hit = hit;
 	}
 	
 	// 게시글 등록 builder
 	@Builder
-	public Content(String title, String content, int userNo, int hit) {
+	public Content(String title, String contents, int userNo, int hit) {
 		this.title = title;
-		this.content = content;
+		this.contents = contents;
 		this.userNo = userNo;
-		this.hit = 1;
+		this.hit = hit;
 	}
-
-
 	
 	
 }

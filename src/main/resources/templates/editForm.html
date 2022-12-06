@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>수정 양식</title>
+</head>
+<body>
+	<div id="wrap">
+		<div id="container" class="clearfix">
+			<div id="content">
+				<h1>게시글 조회</h1>
+				<div id="board">
+					<div id="writeForm">
+						<form th:action="@{/edit}" th:object="${content}" method="post">
+							<input type = "hidden" name = "contentNo" th:field = "${content.contentNo}">
+							<!-- 제목 -->
+							<div class="form-group">
+								<label class="form-text" for="txt-title">제목</label>
+								<input type="text" id="txt-title" th:field="*{title}" th:value="${content.title}">
+							</div>
+						
+							<!-- 내용 -->
+							<div class="form-group">
+								<textarea th:text = "${content.contents}" id="txt-content" th:field = "*{contents}"></textarea>
+							</div>
+							
+							<a id="btn_cancel" th:href="@{/list}">취소</a>
+							<button id="btn_add" type="submit">등록</button>
+							
+						</form>
+						<!-- //form -->
+					</div>
+					<!-- //writeForm -->
+				</div>
+				<!-- //board -->
+			</div>
+			<!-- //content  -->
+		</div>
+		<!-- //container  -->
+	</div>
+	<!-- //wrap -->
+</body>
+</html>
