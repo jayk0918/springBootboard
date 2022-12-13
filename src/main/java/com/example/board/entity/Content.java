@@ -25,6 +25,8 @@ public class Content {
 	// 게시글 리스트
 	private String title;
 	private String contents;
+
+	@Column(insertable=true, updatable=false)
 	private int userNo;
 	//private String userName;
 	private String regdate;
@@ -41,11 +43,12 @@ public class Content {
 	
 	// 게시글 등록 builder
 	@Builder
-	public Content(String title, String contents, int userNo, int hit) {
+	public Content(String title, String contents, int userNo, int hit, String regdate) {
 		this.title = title;
 		this.contents = contents;
 		this.userNo = userNo;
 		this.hit = hit;
+		this.regdate = regdate;
 	}
 	
 	

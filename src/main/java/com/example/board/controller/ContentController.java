@@ -63,9 +63,6 @@ public class ContentController {
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String regdate = transFormat.format(now);
 		
-		System.out.println("controller title : " + title);
-		System.out.println("controller contents : " + contents);
-		
 		Content saveContent = Content.builder().
 								title(title).
 								contents(contents).
@@ -73,6 +70,7 @@ public class ContentController {
 								hit(1).
 								regdate(regdate).
 								build();
+		
 		contentService.write(saveContent);
 		
 		return "redirect:/list";
